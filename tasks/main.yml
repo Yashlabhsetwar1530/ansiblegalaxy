@@ -1,0 +1,15 @@
+---
+# tasks file for myweb
+- name: "installing software"
+  package:
+         name: "httpd"
+         state: present
+- name: "copying the contents"
+  copy: 
+      src: "a.html"
+      dest: "/var/www/html"
+  notify: restartingserver
+- name: "starting server"
+  service: 
+     name: "httpd"
+     state: started
